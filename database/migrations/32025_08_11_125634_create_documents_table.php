@@ -23,15 +23,22 @@ return new class extends Migration
 
             $table->string('status')->default('Отправлен');
 
-            $table->file('file');
+            $table->string('file_path');
+            $table->string('file_name');
 
             $table->unsignedBigInteger('sender_id');
             $table->index('sender_id', 'sender_document_idx');
             $table->foreign('sender_id', 'sender_document_fk')->on('users')->references('id');
 
+            $table->unsignedBigInteger('company_sender_id');
+            $table->index('company_sender_id', 'company_sender_document_idx');
+            $table->foreign('company_sender_id', 'company_sender_document_fk')->on('companies')->references('id');
+
             $table->unsignedBigInteger('recipient_company_id');
             $table->index('recipient_company_id', 'document_recipient_company_idx');
             $table->foreign('recipient_company_id', 'document_recipient_company_fk')->on('companies')->references('id');
+
+
 
             $table->timestamps();
         });

@@ -20,7 +20,14 @@
 
 <body>
     <main class="py-4">
-        @yield('content')
+        <div class="d-flex">
+            <div class="p-2 flex-xl-shrink-0">
+                <a href="" class="btn btn-secondary">Орешки биг боб</a>
+            </div>
+            <div class="p-2 w-100">
+                @yield('content')
+            </div>
+        </div>
     </main>
     </div>
 </body>

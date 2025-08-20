@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Вход в систему
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -71,7 +75,7 @@
                                     @endif
                                 </div>
                                 <div class="text-center mt-3">
-                                    <a href="#" class="text-secondary">Зарегистрироваться</a>
+                                    <a href="{{ route('register') }}" class="text-secondary">Зарегистрироваться</a>
                                 </div>
                             </div>
                         </form>
