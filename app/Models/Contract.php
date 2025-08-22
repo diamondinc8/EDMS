@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Document extends Model
+class Contract extends Model
 {
     use HasFactory;
-    protected $table =  'documents';
+    protected $table =  'contracts';
     protected $guarded = false;
 }
