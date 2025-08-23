@@ -28,14 +28,32 @@
     <div class="container-fluid">
         <main class="py-4">
             <div class="d-flex">
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                    data-bs-target="#createDocumentForm">
-                    Создать документ
-                </button>
+                <div class="col-2 mt-3 text-center">
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><button type="button" data-bs-toggle="modal"
+                                data-bs-target="#createDocumentForm" class="btn btn btn-outline-secondary">Новый
+                                документ</button>
+                        </li>
+
+                        <div class="list-group mt-3">
+                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                Входящие документы
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">Приказы</a>
+                            <a href="#" class="list-group-item list-group-item-action">Акты</a>
+                            <a href="#" class="list-group-item list-group-item-action">Договоры</a>
+                            <a href="#" class="list-group-item list-group-item-action">Счета/счета фактуры</a>
+                            <a href="#" class="list-group-item list-group-item-action">Заявки</a>
+                            <a href="#" class="list-group-item list-group-item-action">Отчеты</a>
+                            <a href="#" class="list-group-item list-group-item-action">Внутренние служебные
+                                записки</a>
+                        </div>
+                    </ul>
+                </div>
                 <!-- Модальное окно -->
                 <div class="modal fade" id="createDocumentForm" tabindex="-1" aria-labelledby="dynamicFormModalLabel"
                     aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg">
                         <div class="modal-content">
 
                             <div class="modal-header">
@@ -101,7 +119,38 @@
                         }
                     });
                 </script>
-                <div class="p-2 w-100">
+                <div class="col-9 p-3">
+                    <h4>Таблица</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Имя</th>
+                                <th>Email</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Иван</td>
+                                <td>ivan@example.com</td>
+                                <td>Активен</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Анна</td>
+                                <td>anna@example.com</td>
+                                <td>Неактивен</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Петр</td>
+                                <td>petr@example.com</td>
+                                <td>Активен</td>
+                            </tr>
+                        </tbody>
+                    </table>
                     @yield('content')
                 </div>
             </div>

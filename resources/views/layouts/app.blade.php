@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <main class="py-4">
+    <main class="container d-flex justify-content-center align-items-center min-vh-100">
         @yield('content')
     </main>
     </div>
