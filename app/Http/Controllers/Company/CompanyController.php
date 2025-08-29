@@ -25,6 +25,6 @@ class CompanyController extends BaseController
         // Создание компании в SQl
         $this->service->createCompany($data);
         // Переадресация на главную страницу
-        return redirect()->route('company.index');
+        return redirect()->route('index');
     }
 }

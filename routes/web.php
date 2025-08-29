@@ -16,6 +16,13 @@ Route::middleware([isAuthorized::class])->group(function () {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     });
     Route::get('/', [IndexController::class, 'index'])->name('index');
+    Route::get('/orders', [IndexController::class, 'orders'])->name('orders');
+    Route::get('/acts', [IndexController::class, 'acts'])->name('acts');
+    Route::get('/contracts', [IndexController::class, 'contracts'])->name('contracts');
+    Route::get('/invoices', [IndexController::class, 'invoices'])->name('invoices');
+    Route::get('/requests', [IndexController::class, 'requests'])->name('requests');
+    Route::get('/reports', [IndexController::class, 'reports'])->name('reports');
+    Route::get('/memos', [IndexController::class, 'memos'])->name('memos');
 });
 
 Route::post('/company/create', [CompanyController::class, 'store'])->name('company.store');
