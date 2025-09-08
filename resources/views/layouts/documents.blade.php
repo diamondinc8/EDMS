@@ -149,13 +149,41 @@
                             </div>
 
                             <div class="modal-body">
-                                <form id="myForm" method="POST">
+                                <form id="myForm" method="POST" action="{{ route('document.store') }}">
                                     <div class="mb-3">
                                         <label for="typeSelect" class="form-label">Выберите тип документа</label>
                                         <select class="form-select" id="typeSelect">
-                                            <option value="">-- Выберите --</option>
-                                            <option value="text">Текстовое поле</option>
-                                            <option value="email">Email поле</option>
+                                            <option value="">-- Выберите тип документа --</option>
+
+                                            @can('user_can_create_document', 'приказ')
+                                                <option value="order">Приказ</option>
+                                            @endcan
+
+                                            @can('user_can_create_document', 'акт')
+                                                <option value="act">Акт</option>
+                                            @endcan
+
+                                            @can('user_can_create_document', 'договор')
+                                                <option value="contract">Договор</option>
+                                            @endcan
+
+                                            @can('user_can_create_document', 'счет')
+                                                <option value="invoice">Счет/счет-фактура</option>
+                                            @endcan
+
+                                            @can('user_can_create_document', 'заявка')
+                                                <option value="request">Заявка</option>
+                                            @endcan
+
+                                            @can('user_can_create_document', 'отчет')
+                                                <option value="report">Отчет</option>
+                                            @endcan
+
+                                            @can('user_can_create_document', 'записка')
+                                                <option value="memo">Внутренняя служебная записка</option>
+                                            @endcan
+
+
                                         </select>
                                     </div>
 
@@ -163,48 +191,98 @@
                                     <div id="additionalFields"></div>
                                 </form>
                             </div>
+                            <script>
+                                const typeSelect = document.getElementById('typeSelect');
+                                const additionalFields = document.getElementById('additionalFields');
+
+                                typeSelect.addEventListener('change', function() {
+                                    // Очищаем старые поля
+                                    additionalFields.innerHTML = '';
+
+
+                                    if (this.value === 'order') {
+                                        // Поле номера документа
+                                        const numberGroup = document.createElement('div');
+                                        numberGroup.className = "input-group mb-3";
+                                        const spanNumberMessage = document.createElement('span');
+                                        spanNumberMessage.className = "input-group-text";
+                                        spanNumberMessage.id = "basic-addon1";
+                                        spanNumberMessage.textContent = "№";
+                                        const numberInput = document.createElement('input');
+                                        numberInput.type = "number";
+                                        numberInput.className = "form-control";
+                                        numberInput.placeholder = "Номер документа";
+                                        numberInput.name = "document_number";
+                                        numberGroup.appendChild(spanNumberMessage);
+                                        numberGroup.appendChild(numberInput);
+
+                                        // Заголовок
+                                        const titleGroup = document.createElement('div');
+                                        titleGroup.className = "input-group mb-3";
+                                        const spanTitleMessage = document.createElement('span');
+                                        spanTitleMessage.className = "input-group-text";
+                                        spanTitleMessage.id = "basic-addon1";
+                                        spanTitleMessage.textContent = "Заголовок";
+                                        const titleInput = document.createElement('input');
+                                        titleInput.type = "input";
+                                        titleInput.className = "form-control";
+                                        titleInput.placeholder = "Заголовок документа";
+                                        titleInput.name = "title";
+                                        titleGroup.appendChild(spanTitleMessage);
+                                        titleGroup.appendChild(titleInput);
+
+
+                                        // Дата приказа
+                                        const dateGroup = document.createElement('div');
+                                        dateGroup.className = "input-group mb-3";
+                                        const spanDateMessage = document.createElement('span');
+                                        spanDateMessage.className = "input-group-text";
+                                        spanDateMessage.id = "basic-addon2";
+                                        spanDateMessage.textContent = "Дата";
+                                        const dateInput = document.createElement('input');
+                                        dateInput.type = "date";
+                                        dateInput.className = "form-control";
+                                        dateInput.name = "date";
+                                        dateInput.placeholder = "Дата приказа";
+                                        dateGroup.appendChild(spanDateMessage);
+                                        dateGroup.appendChild(dateInput);
+
+                                        // Содержание приказа
+                                        const contentGroup = document.createElement('div');
+                                        contentGroup.className = "input-group";
+
+                                        const spanContentMessage = document.createElement('span');
+                                        spanContentMessage.className = "input-group-text";
+                                        spanContentMessage.id = "basic-addon3";
+                                        spanContentMessage.textContent = "Содержание";
+
+                                        const contentTextarea = document.createElement('textarea');
+                                        contentTextarea.className = "form-control";
+                                        contentTextarea.name = "content";
+                                        contentTextarea.placeholder = "Содержание приказа";
+                                        contentGroup.appendChild(spanContentMessage);
+                                        contentGroup.appendChild(contentTextarea);
+
+                                        // Добавить группу для выбора файла.
+
+                                        additionalFields.appendChild(numberGroup);
+                                        additionalFields.appendChild(titleGroup);
+                                        additionalFields.appendChild(dateGroup);
+                                        additionalFields.appendChild(contentGroup);
+                                    }
+                                });
+                            </script>
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary"
                                     data-bs-dismiss="modal">Закрыть</button>
-                                <button type="button" class="btn btn-primary">Отправить</button>
+                                <button type="submit" class="btn btn-primary">Отправить</button>
                             </div>
 
                         </div>
                     </div>
                 </div>
 
-                <script>
-                    const typeSelect = document.getElementById('typeSelect');
-                    const additionalFields = document.getElementById('additionalFields');
-
-                    typeSelect.addEventListener('change', function() {
-                        // Очищаем старые поля
-                        additionalFields.innerHTML = '';
-
-                        if (this.value === 'text') {
-                            const input = document.createElement('input');
-                            const input2 = document.createElement('input');
-                            input.type = 'text';
-                            input.className = ""
-                            input2.type = 'text';
-                            input.className = 'form-control mb-3';
-                            input.placeholder = 'Введите текст';
-                            input2.className = 'form-control mb-3';
-                            input2.placeholder = 'Введите текст';
-                            additionalFields.appendChild(input);
-                            additionalFields.appendChild(input2);
-                        }
-
-                        if (this.value === 'email') {
-                            const input = document.createElement('input');
-                            input.type = 'email';
-                            input.className = 'form-control mb-3';
-                            input.placeholder = 'Введите email';
-                            additionalFields.appendChild(input);
-                        }
-                    });
-                </script>
                 <div class="col-10 p-3">
                     @yield('content')
                 </div>

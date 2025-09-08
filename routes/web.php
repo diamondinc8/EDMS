@@ -8,6 +8,8 @@ use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\IndexController;
 use App\Http\Middleware\isNotOwner;
 
+use function Pest\Laravel\post;
+
 // Автоматическая переадресация на регистрацию, если пользователь не вошёл в аккаунт.
 Route::middleware([isAuthorized::class])->group(function () {
     // Автоматическая переадресация на 'index'-страницу (список отправленных документов)
@@ -30,3 +32,6 @@ Route::post('/company/create', [CompanyController::class, 'store'])->name('compa
 Route::get('/support', [SupportController::class, 'index'])->name('support');
 
 Auth::routes();
+Route::post('/', function () {
+    dd('1111');
+})->name('document.store');
