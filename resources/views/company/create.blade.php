@@ -28,13 +28,13 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Название: </span>
                     <input type="text" class="form-control" placeholder="Название" aria-label="Username"
-                        aria-describedby="basic-addon1" name="name">
+                        aria-describedby="basic-addon1" name="name" required>
                 </div>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon2">ИНН:</span>
                     <input type="text" class="form-control" placeholder="ИНН" aria-label="Recipient’s username"
-                        aria-describedby="basic-addon2" name="tin">
+                        aria-describedby="basic-addon2" name="tin" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Создать</button>

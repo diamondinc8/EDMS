@@ -3,6 +3,7 @@
 namespace App\Services\Company;
 
 use App\Models\Company;
+use App\Models\CompanyContractors;
 use App\Models\CompanyRole;
 
 class Service
@@ -10,7 +11,7 @@ class Service
     public function createCompany(array $data)
     {
         // Создание компании
-        $company = Company::create($data);
+        $company = Company::firstOrCreate($data);
 
         // Получение id только что созданной компании
         $company_id = $company->id;
@@ -23,6 +24,10 @@ class Service
         ];
 
         // Создание записи в таблице company_roles
-        CompanyRole::create($data_for_role);
+        CompanyRole::firstOrCreate($data_for_role);
+    }
+    public function addContractor($data)
+    {
+        CompanyContractors::firstOrCreate($data);
     }
 }

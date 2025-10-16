@@ -14,11 +14,32 @@
                             </div>
                         @endif
 
-                        <p>
-                            Чтобы продолжить работу, вам требуется <a href="{{ route('company.create') }}">зарегистрировать
-                                компанию</a>,
-                            либо получить приглашение от руководителя компании.
-                        </p>
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">Ваш ID:</h5>
+                                <p class="card-text fs-4" id="copyText">{{ Auth::id() }}</p>
+                                <button class="btn btn-outline-primary" onclick="copyText()">
+                                    <i class="bi bi-clipboard"></i> Копировать
+                                </button>
+                            </div>
+                            Отправьте его вашему начальнику, чтобы получить доступ к документообороту.
+                        </div>
+                        <hr class="border border-secondary border-2 opacity-50">
+                        <div class="text-center mb-1">
+                            Или вы можете зарегистрировать компанию. <a href="{{ route('company.create') }}">Для этого
+                                откройте
+                                форму регистрации.</a>
+                        </div>
+                        <script>
+                            function copyText() {
+                                const text = document.getElementById('copyText').innerText;
+                                navigator.clipboard.writeText(text).then(() => {
+                                    const btn = event.currentTarget;
+                                    btn.innerHTML = '<i class="bi bi-check2"></i> Скопировано!';
+                                    setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i> Копировать', 1500);
+                                });
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
