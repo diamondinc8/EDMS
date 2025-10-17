@@ -49,13 +49,14 @@
                     <td>{{ $company_partner['name'] }}</td>
                     <td>{{ $company_partner['tin'] }}</td>
                     <td>
-
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#delete"
-                            class="text-secondary-emphasis list-group-item list-group-item-action d-flex align-items-center">
-                            <span class="material-symbols-outlined">
-                                delete
-                            </span>
-                        </button>
+                        @can('user_can_add_or_remove_partner')
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#delete"
+                                class="text-secondary-emphasis list-group-item list-group-item-action d-flex align-items-center">
+                                <span class="material-symbols-outlined">
+                                    delete
+                                </span>
+                            </button>
+                        @endcan
                         <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="dynamicFormModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog modal-sm">

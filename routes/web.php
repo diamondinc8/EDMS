@@ -5,6 +5,7 @@ use App\Http\Middleware\isAuthorized;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CompanySettings;
 use App\Http\Controllers\ContactorController;
 use App\Http\Controllers\IndexController;
 use App\Http\Middleware\isNotOwner;
@@ -25,6 +26,8 @@ Route::middleware([isAuthorized::class])->group(function () {
     Route::get('/requests', [IndexController::class, 'requests'])->name('requests');
     Route::get('/reports', [IndexController::class, 'reports'])->name('reports');
     Route::get('/memos', [IndexController::class, 'memos'])->name('memos');
+    Route::get('/company/settings', [CompanySettings::class, 'index'])->name('company.settings.index');
+    Route::get('/company/settings/users', [CompanySettings::class, 'users'])->name('company.settings.users');
 });
 
 Route::post('/company/create', [CompanyController::class, 'store'])->name('company.store');

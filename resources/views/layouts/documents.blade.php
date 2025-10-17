@@ -64,7 +64,8 @@
 
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">Настройки</a>
+                                <a href="{{ route('company.settings.index') }}" class="nav-link active">Настройки
+                                    организации</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

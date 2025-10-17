@@ -29,6 +29,17 @@
                             Или вы можете зарегистрировать компанию. <a href="{{ route('company.create') }}">Для этого
                                 откройте
                                 форму регистрации.</a>
+                            </p>
+                            Если вы зашли не в тот аккаунт вы можете <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('выйти.') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                            </a>
+                            <p>
                         </div>
                         <script>
                             function copyText() {
