@@ -26,7 +26,7 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#">{{ Auth::company_name() }}</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -40,25 +40,16 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('index') }}">Документооборот</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
+
                     </ul>
                     <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="🔍 Найти документ"
+                        <input class="form-control me-2" type="search" placeholder="Найти документ"
                             aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">Найти</button>
+                        <button class="d-inline-flex align-items-center btn btn-outline-success" type="submit">
+                            <span class="material-symbols-outlined" style="margin-right: 0.09cm">
+                                search
+                            </span>
+                            Найти</button>
                     </form>
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 
@@ -101,7 +92,7 @@
                             <li class="nav-item">
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#createDocumentForm"
                                     class="text-secondary-emphasis list-group-item list-group-item-action d-flex align-items-center">
-                                    <span class="material-symbols-outlined me-2">
+                                    <span class="material-symbols-outlined" style="margin-right: 0.09cm">
                                         add
                                     </span>
                                     Новый документ
@@ -111,25 +102,56 @@
 
                         <div class="list-group mt-3">
                             <a href="{{ route('index') }}"
-                                class="list-group-item list-group-item-action {{ request()->routeIs('index') ? 'active' : '' }}"
+                                class="d-inline-flex align-items-center list-group-item list-group-item-action {{ request()->routeIs('index') ? 'active' : '' }}"
                                 aria-current="true">
+                                <span class="material-symbols-outlined" style="margin-right: 0.09cm">
+                                    acute
+                                </span>
                                 Входящие документы
                             </a>
                             <a href="{{ route('orders') }}"
-                                class="list-group-item list-group-item-action {{ request()->routeIs('orders') ? 'active' : '' }}">Приказы</a>
+                                class="d-inline-flex align-items-center list-group-item list-group-item-action {{ request()->routeIs('orders') ? 'active' : '' }}">
+                                <span class="material-symbols-outlined" style="margin-right: 0.09cm">
+                                    orders
+                                </span>
+                                Приказы</a>
                             <a href="{{ route('acts') }}"
-                                class="list-group-item list-group-item-action {{ request()->routeIs('acts') ? 'active' : '' }}">Акты</a>
+                                class="d-inline-flex align-items-center list-group-item list-group-item-action {{ request()->routeIs('acts') ? 'active' : '' }}">
+                                <span class="material-symbols-outlined" style="margin-right: 0.09cm">
+                                    format_list_numbered
+                                </span>
+                                Акты</a>
                             <a href="{{ route('contracts') }}"
-                                class="list-group-item list-group-item-action {{ request()->routeIs('contracts') ? 'active' : '' }}">Договоры</a>
+                                class="d-inline-flex align-items-center list-group-item list-group-item-action {{ request()->routeIs('contracts') ? 'active' : '' }}">
+                                <span class="material-symbols-outlined" style="margin-right: 0.09cm">
+                                    contract
+                                </span>
+                                Договоры</a>
                             <a href="{{ route('invoices') }}"
-                                class="list-group-item list-group-item-action {{ request()->routeIs('invoices') ? 'active' : '' }}">Счета/счета
+                                class="d-inline-flex align-items-center list-group-item list-group-item-action {{ request()->routeIs('invoices') ? 'active' : '' }}">
+                                <span class="material-symbols-outlined" style="margin-right: 0.09cm">
+                                    receipt
+                                </span>
+                                Счета/счета
                                 фактуры</a>
                             <a href="{{ route('requests') }}"
-                                class="list-group-item list-group-item-action {{ request()->routeIs('requests') ? 'active' : '' }}">Заявки</a>
+                                class="d-inline-flex align-items-center list-group-item list-group-item-action {{ request()->routeIs('requests') ? 'active' : '' }}">
+                                <span class="material-symbols-outlined" style="margin-right: 0.09cm">
+                                    fact_check
+                                </span>
+                                Заявки</a>
                             <a href="{{ route('reports') }}"
-                                class="list-group-item list-group-item-action {{ request()->routeIs('reports') ? 'active' : '' }}">Отчеты</a>
+                                class="d-inline-flex align-items-center list-group-item list-group-item-action {{ request()->routeIs('reports') ? 'active' : '' }}">
+                                <span class="material-symbols-outlined" style="margin-right: 0.09cm">
+                                    list_alt_check
+                                </span>
+                                Отчеты</a>
                             <a href="{{ route('memos') }}"
-                                class="list-group-item list-group-item-action {{ request()->routeIs('memos') ? 'active' : '' }}">Внутренние
+                                class="d-inline-flex align-items-center list-group-item list-group-item-action {{ request()->routeIs('memos') ? 'active' : '' }}">
+                                <span class="material-symbols-outlined" style="margin-right: 0.09cm">
+                                    edit_calendar
+                                </span>
+                                Внутренние
                                 служебные
                                 записки</a>
                         </div>
@@ -138,9 +160,27 @@
                                 Переход на страницу с редактированием контрагентов компании. Должны иметь доступ только: основатель и менеджер
                                 
                             -->
-                            <a href="{{ route('partners') }}"
-                                class="list-group-item list-group-item-action {{ request()->routeIs('partners') ? 'active' : '' }}">Контрагенты</a>
+                            <a href="{{ route('submitted') }}"
+                                class="d-inline-flex align-items-center list-group-item list-group-item-action {{ request()->routeIs('submitted') ? 'active' : '' }}">
+                                <span class="material-symbols-outlined" style="margin-right: 0.09cm">
+                                    reply
+                                </span>
+                                Отправленные
+                                документы</a>
                         </div>
+                        <div class="list-group mt-3">
+                            <!--
+                                Переход на страницу с редактированием контрагентов компании. Должны иметь доступ только: основатель и менеджер
+                                
+                            -->
+                            <a href="{{ route('partners') }}"
+                                class="d-inline-flex align-items-center list-group-item list-group-item-action {{ request()->routeIs('partners') ? 'active' : '' }}">
+                                <span class="material-symbols-outlined" style="margin-right: 0.09cm">
+                                    apartment
+                                </span>
+                                Контрагенты</a>
+                        </div>
+
                     </ul>
                 </div>
                 <!-- Модальное окно -->
@@ -317,20 +357,38 @@
                                         numberGroup.appendChild(spanNumberMessage);
                                         numberGroup.appendChild(numberInput);
 
-                                        // Ввод компании получателя
+                                        // Выбор компании получателя
                                         const recipientCompanyGroup = document.createElement('div');
                                         recipientCompanyGroup.className = "input-group mb-3";
                                         const spanRecipientCompanyMessage = document.createElement('span');
                                         spanRecipientCompanyMessage.className = "input-group-text";
-                                        spanRecipientCompanyMessage.id = "basic-addon1";
                                         spanRecipientCompanyMessage.textContent = "Получатель документа";
-                                        const recipientCompanyInput = document.createElement('input');
-                                        recipientCompanyInput.type = "number";
-                                        recipientCompanyInput.className = "form-control";
-                                        recipientCompanyInput.placeholder = "Инн компании";
-                                        recipientCompanyInput.name = "document_number";
+
+                                        const recipientCompanySelect = document.createElement('select');
+                                        recipientCompanySelect.className = "form-select"; // исправлено
+                                        recipientCompanySelect.name = "recipient_company_id";
+
+                                        const defaultOption = document.createElement('option');
+                                        defaultOption.value = "";
+                                        defaultOption.textContent = "Выберите контрагента";
+                                        defaultOption.disabled = true;
+                                        defaultOption.selected = true;
+                                        recipientCompanySelect.appendChild(defaultOption);
+
+                                        fetch('/api/contractors')
+                                            .then(res => res.json())
+                                            .then(contractors => {
+                                                contractors.forEach(contractor => {
+                                                    const option = document.createElement('option');
+                                                    option.value = contractor.id;
+                                                    option.textContent = `${contractor.tin} - ${contractor.name}`;
+                                                    recipientCompanySelect.appendChild(option);
+                                                });
+                                            })
+                                            .catch(err => console.error('Ошибка при загрузке контрагентов:', err));
+
                                         recipientCompanyGroup.appendChild(spanRecipientCompanyMessage);
-                                        recipientCompanyGroup.appendChild(recipientCompanyInput);
+                                        recipientCompanyGroup.appendChild(recipientCompanySelect);
 
                                         // Заголовок
                                         const titleGroup = document.createElement('div');
@@ -359,7 +417,7 @@
                                         dateInput.type = "date";
                                         dateInput.className = "form-control";
                                         dateInput.name = "date";
-                                        dateInput.placeholder = "Дата приказа";
+                                        dateInput.placeholder = "Дата акта";
                                         dateGroup.appendChild(spanDateMessage);
                                         dateGroup.appendChild(dateInput);
 
@@ -375,7 +433,7 @@
                                         const contentTextarea = document.createElement('textarea');
                                         contentTextarea.className = "form-control";
                                         contentTextarea.name = "content";
-                                        contentTextarea.placeholder = "Содержание приказа";
+                                        contentTextarea.placeholder = "Содержание акта";
 
                                         contentGroup.appendChild(spanContentMessage);
                                         contentGroup.appendChild(contentTextarea);

@@ -19,9 +19,7 @@ class ContactorController extends BaseController
         $tin = $request->validated();
         $companiesTins = Company::all()->pluck('tin')->toArray();
 
-        $user = Auth::user();
-        $company_id = CompanyRole::where('user_id', $user->id)
-            ->value('company_id');
+        $company_id = Auth::company_id();
 
         if (in_array($tin['tin'], $companiesTins)) {
             $company_contractor_id = Company::where('tin', $tin['tin'])->first();
@@ -39,5 +37,15 @@ class ContactorController extends BaseController
     {
         $partner->delete();
         return redirect()->route('partners');
+    }
+
+
+    public function get_contractors_json()
+    {
+        // Получаем коллекцию контрагентов
+        $contractors = Auth::company_contractors();
+
+        // Возвращаем JSON
+        return response()->json($contractors);
     }
 }

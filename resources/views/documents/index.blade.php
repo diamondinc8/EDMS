@@ -9,7 +9,10 @@
 @endsection
 
 @section('content')
-    <h4>Таблица</h4>
+    <div class="text-center text-secondary">
+        <h2>Новых документов нет</h2>
+    </div>
+    {{-- <h4>Таблица</h4>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -39,5 +42,5 @@
                 <td>Активен</td>
             </tr>
         </tbody>
-    </table>
+    </table> --}}
 @endsection

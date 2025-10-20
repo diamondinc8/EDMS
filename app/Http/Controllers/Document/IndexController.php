@@ -17,11 +17,10 @@ class IndexController extends Controller
 
     public function partners()
     {
-        $user = Auth::user();
+        //$user = Auth::user();
 
         // Получаем ID компании, с которой связан пользователь
-        $company_id = CompanyRole::where('user_id', $user->id)
-            ->value('company_id');
+        $company_id = Auth::company_id();
 
         // Получаем партнёров компании (таблица связей)
         $company_partners = CompanyContractors::where('company_id', $company_id)

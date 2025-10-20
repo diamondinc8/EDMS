@@ -29,6 +29,7 @@ Route::middleware([isAuthorized::class])->group(function () {
         Route::get('/requests', [IndexController::class, 'requests'])->name('requests');
         Route::get('/reports', [IndexController::class, 'reports'])->name('reports');
         Route::get('/memos', [IndexController::class, 'memos'])->name('memos');
+        Route::get('/submitted', [IndexController::class, 'submitted'])->name('submitted');
         Route::get('/company/settings', [CompanySettingsController::class, 'index'])->name('company.settings.index');
         Route::get('/company/settings/users', [CompanySettingsController::class, 'users'])->name('company.settings.users');
     });
@@ -49,3 +50,6 @@ Auth::routes();
 Route::post('/', function () {
     dd('1111');
 })->name('document.store');
+
+
+Route::get('/api/contractors', [ContactorController::class, 'get_contractors_json']);

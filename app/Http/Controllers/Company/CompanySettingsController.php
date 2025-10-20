@@ -14,8 +14,8 @@ class CompanySettingsController extends Controller
 {
     function index()
     {
-        $user = Auth::user();
-        $company_id = CompanyRole::where('user_id', $user->id)->value('company_id');
+
+        $company_id = Auth::company_id();
         $company = Company::find($company_id);
 
         return view('company.settings.index');
