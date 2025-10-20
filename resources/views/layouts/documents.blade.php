@@ -38,7 +38,7 @@
                             <a class="nav-link active" aria-current="page" href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Документооборот</a>
+                            <a class="nav-link" href="{{ route('index') }}">Документооборот</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -56,7 +56,7 @@
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Найти документ"
+                        <input class="form-control me-2" type="search" placeholder="🔍 Найти документ"
                             aria-label="Search" />
                         <button class="btn btn-outline-success" type="submit">Найти</button>
                     </form>

@@ -18,10 +18,11 @@ class isEmployee
     public function handle(Request $request, Closure $next): Response
     {
         $user_id = Auth::id();
-        $isEmployee = CompanyRole::where('founder_id', $user_id)->exists();
+
+        $isEmployee = CompanyRole::where('user_id', $user_id)->exists();
         if ($isEmployee) {
-            return redirect()->route('home');
+            return $next($request);
         }
-        return $next($request);
+        return redirect()->route('home');
     }
 }
