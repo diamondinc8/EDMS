@@ -173,8 +173,8 @@
                                 Переход на страницу с редактированием контрагентов компании. Должны иметь доступ только: основатель и менеджер
                                 
                             -->
-                            <a href="{{ route('partners') }}"
-                                class="d-inline-flex align-items-center list-group-item list-group-item-action {{ request()->routeIs('partners') ? 'active' : '' }}">
+                            <a href="{{ route('contractors.index') }}"
+                                class="d-inline-flex align-items-center list-group-item list-group-item-action {{ request()->routeIs('contractors.index') ? 'active' : '' }}">
                                 <span class="material-symbols-outlined" style="margin-right: 0.09cm">
                                     apartment
                                 </span>
@@ -197,9 +197,10 @@
 
                             <div class="modal-body">
                                 <form id="myForm" method="POST" action="{{ route('document.store') }}">
+                                    @csrf
                                     <div class="mb-3">
                                         <label for="typeSelect" class="form-label">Выберите тип документа</label>
-                                        <select class="form-select" id="typeSelect">
+                                        <select class="form-select" id="typeSelect" name="document_type">
                                             <option value="">-- Выберите тип документа --</option>
 
                                             @can('user_can_create_document', 'приказ')
