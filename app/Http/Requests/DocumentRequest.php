@@ -26,6 +26,7 @@ class DocumentRequest extends FormRequest
             'document_number' => 'integer',
             'title' => 'string',
             'date' => 'date',
+            'amount' => 'decimal',
             'content' => 'string',
             'documents' => 'array',
             'recipient_company_id' => 'integer',

@@ -407,7 +407,7 @@
                                         titleGroup.appendChild(titleInput);
 
 
-                                        // Дата приказа
+                                        // Дата акта
                                         const dateGroup = document.createElement('div');
                                         dateGroup.className = "input-group mb-3";
                                         const spanDateMessage = document.createElement('span');
@@ -422,7 +422,24 @@
                                         dateGroup.appendChild(spanDateMessage);
                                         dateGroup.appendChild(dateInput);
 
-                                        // Содержание приказа
+
+                                        // Сумма
+                                        const amountGroup = document.createElement('div');
+                                        amountGroup.className = "input-group mb-3";
+                                        const spanAmountMessage = document.createElement('span');
+                                        spanAmountMessage.className = "input-group-text";
+                                        spanAmountMessage.id = "basic-addon1";
+                                        spanAmountMessage.textContent = "Сумма";
+                                        const amountInput = document.createElement('input');
+                                        amountInput.type = "number";
+                                        amountInput.pattern = "^\d*(\.\d{0,2})?$"
+                                        amountInput.className = "form-control";
+                                        amountInput.placeholder = "0.00";
+                                        amountInput.name = "amount";
+                                        amountGroup.appendChild(spanAmountMessage);
+                                        amountGroup.appendChild(amountInput);
+
+                                        // Содержание акта
                                         const contentGroup = document.createElement('div');
                                         contentGroup.className = "input-group mb-3";
 
@@ -461,6 +478,7 @@
                                         additionalFields.appendChild(recipientCompanyGroup);
                                         additionalFields.appendChild(titleGroup);
                                         additionalFields.appendChild(dateGroup);
+                                        additionalFields.appendChild(amountGroup);
                                         additionalFields.appendChild(contentGroup);
                                         additionalFields.appendChild(fileGroup);
                                     }
