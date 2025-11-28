@@ -432,9 +432,10 @@
                                         spanAmountMessage.textContent = "Сумма";
                                         const amountInput = document.createElement('input');
                                         amountInput.type = "number";
-                                        amountInput.pattern = "^\d*(\.\d{0,2})?$"
+                                        amountInput.step = "0.01"
+                                        amountInput.min = "0.00"
                                         amountInput.className = "form-control";
-                                        amountInput.placeholder = "0.00";
+                                        amountInput.placeholder = "0,00";
                                         amountInput.name = "amount";
                                         amountGroup.appendChild(spanAmountMessage);
                                         amountGroup.appendChild(amountInput);

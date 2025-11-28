@@ -15,16 +15,13 @@ return new class extends Migration
             $table->id();
 
             $table->string('title');
-            $table->text('description');
 
-            $table->unsignedBigInteger('type_id');
-            $table->index('type_id', 'document_type_idx');
-            $table->foreign('type_id', 'document_type_fk')->on('document_types')->references('id');
+            $table->string('type');
 
             $table->string('status')->default('Отправлен');
 
-            $table->string('file_path');
-            $table->string('file_name');
+            // $table->string('file_path');
+            // $table->string('file_name');
 
             $table->unsignedBigInteger('sender_id');
             $table->index('sender_id', 'sender_document_idx');
@@ -38,7 +35,7 @@ return new class extends Migration
             $table->index('recipient_company_id', 'document_recipient_company_idx');
             $table->foreign('recipient_company_id', 'document_recipient_company_fk')->on('companies')->references('id');
 
-
+            $table->unsignedBigInteger('id_in_category');
 
             $table->timestamps();
         });

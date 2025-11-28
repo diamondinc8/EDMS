@@ -22,15 +22,14 @@ class DocumentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'document_type' => 'string',
-            'document_number' => 'integer',
-            'title' => 'string',
-            'date' => 'date',
-            'amount' => 'decimal',
-            'content' => 'string',
-            'documents' => 'array',
-            'recipient_company_id' => 'integer',
-
+            'document_type' => 'required|string',
+            'document_number' => 'nullable|integer',
+            'title' => 'nullable|string',
+            'date' => 'nullable|date',
+            'amount' => 'numeric',
+            'content' => 'nullable|string',
+            'documents' => 'nullable|array',
+            'recipient_company_id' => 'nullable|integer',
         ];
     }
 }

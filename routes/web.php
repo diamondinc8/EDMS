@@ -38,7 +38,7 @@ Route::middleware([isAuthorized::class])->group(function () {
 Route::post('/company/create', [CompanyController::class, 'store'])->name('company.store');
 Route::post('/company/users', [EmployeeController::class, 'store'])->name('employee.store');
 
-Route::post('/', [DocumentController::class, 'store'])->name('document.store');
+Route::post('/document/store', [DocumentController::class, 'store'])->name('document.store');
 
 Route::get('/support', [SupportController::class, 'index'])->name('support');
 Route::post('/partners', [ContactorController::class, 'add'])->name('partner.add');

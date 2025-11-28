@@ -10,14 +10,18 @@
 
 @section('content')
     <div class="text-center text-secondary">
+        <span class="material-symbols-outlined" style="font-size: 500%">
+            folder_off
+        </span>
         <h2>Новых документов нет</h2>
     </div>
-    {{-- <h4>Таблица</h4>
+
+    {{-- <h4>Недавно полученные документы</h4>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Имя</th>
+                <th>ИНН отправителя</th>
                 <th>Email</th>
                 <th>Статус</th>
             </tr>
