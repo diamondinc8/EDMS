@@ -34,7 +34,7 @@
                             {{ $sended_document_info['creator'] }}
                         </td>
                         <td>
-                            @if ($sended_document_info['recipient_company_name'] != Auth::company_id())
+                            @if ($sended_document_info['recipient_company_id'] != Auth::company_id())
                                 {{ $sended_document_info['recipient_company_name'] }}
                             @else
                                 ВНУТРЕННИЙ ДОКУМЕНТ

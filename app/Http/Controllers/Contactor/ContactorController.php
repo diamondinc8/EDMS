@@ -66,7 +66,7 @@ class ContactorController extends BaseController
                 'company_contractor_id' => $company_contractor_id['id'],
             ];
             $this->service->addContractor($dataArray);
-            return redirect()->route('partners');
+            return redirect()->route('contractors.index');
         }
         dd('Указан неверный ИНН.');
     }
@@ -74,7 +74,7 @@ class ContactorController extends BaseController
     function destroy(CompanyContractors $partner)
     {
         $partner->delete();
-        return redirect()->route('partners');
+        return redirect()->route('contractors.index');
     }
 
 

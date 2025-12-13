@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Auth;
 
 class DocumentController extends BaseController
 {
+
+    public function getCompanyNameAndTin($company_id)
+    {
+        $company_name_and_tin = Company::select('name', 'tin')->find($company_id)?->only(['name', 'tin']);
+        return $company_name_and_tin;
+    }
+
     public function getRecipientCompany($company_id)
     {
         $company_contractors = CompanyContractors::where('company_id', $company_id)->pluck('company_contractor_id');
@@ -42,8 +49,32 @@ class DocumentController extends BaseController
 
     public function index()
     {
+        $company_id = Auth::company_id();
 
-        return view('documents.index');
+        $received_documents_info_non_validate = Document::where('recipient_company_id', $company_id)->orderBy('id', 'desc')->get(['sender_id', 'id_in_category', 'type', 'company_sender_id', 'status']);
+        $received_documents_info = [];
+
+        foreach ($received_documents_info_non_validate as $document_info) {
+            switch ($document_info['type']) {
+                case 'act':
+                    $act = Act::find($document_info['id_in_category']);
+                    $user_id = $document_info['sender_id'];
+
+                    $sender_company_name = $this->getCompanyNameAndTin($document_info['company_sender_id'])['name'];
+                    $received_documents_info[] = [
+                        'document_number' => $act->document_number,
+                        'document_type' => "Акт",
+                        'creator' => $this->getUserNameAndPost($user_id)['name'] . ' ' . $this->getUserNameAndPost($user_id)['surname'] . ', ' . $this->getUserNameAndPost($user_id)['role'],
+                        'sender_company_name' => $sender_company_name,
+                        'sender_company_id' => $document_info['company_sender_id'],
+                        'status' => $document_info['status']
+                    ];
+
+                    break;
+            }
+        }
+        // dd($received_documents_info);
+        return view('documents.index', compact('received_documents_info'));
     }
 
     public function submitted()
@@ -59,12 +90,13 @@ class DocumentController extends BaseController
                     $act = Act::find($document_info['id_in_category']);
                     $user_id = $document_info['sender_id'];
 
-                    $recipient_company_name = $this->getRecipientCompany($document_info['recipient_company_id'])[0]['name'];
+                    $recipient_company_name = $this->getCompanyNameAndTin($document_info['recipient_company_id'])['name'];
                     $sended_documents_info[] = [
                         'document_number' => $act->document_number,
                         'document_type' => "Акт",
                         'creator' => $this->getUserNameAndPost($user_id)['name'] . ' ' . $this->getUserNameAndPost($user_id)['surname'] . ', ' . $this->getUserNameAndPost($user_id)['role'],
                         'recipient_company_name' => $recipient_company_name,
+                        'recipient_company_id' => $document_info['recipient_company_id'],
                         'status' => $document_info['status']
                     ];
 
